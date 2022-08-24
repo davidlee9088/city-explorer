@@ -1,14 +1,14 @@
 import React from "react";
 import Form from './Form';
-import Error from "./Error";
+
 
 class Main extends React.Component {
   render() {
-    console.log(this.props, 'props');
+    console.log(this.props);
     return (
       <div className='test'>
 
-        <div className='test justify-content-center align-items-center'>
+        <div className='test2'>
           {Object.keys(this.props.cityData).length > 0 && (
             <img
               alt={this.props.cityData.display_name}
@@ -25,12 +25,6 @@ class Main extends React.Component {
             handleCitySubmit={this.props.handleCitySubmit}
           />
 
-          {this.props.error && (
-            <Error
-              errorMessage={this.props.errorMessage}
-            />
-
-          )}
 
           {Object.keys(this.props.cityData).length > 0 && (
             <ul className='list-unstyled '>
