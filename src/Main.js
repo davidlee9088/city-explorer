@@ -27,16 +27,16 @@ class Main extends React.Component {
 
 
           {Object.keys(this.props.cityData).length > 0 && (
-            <ul className='list-unstyled '>
-              <li className='py-2'>
+            <ul className='list'>
+              <li className='list-01'>
                 <p className='p-0 m-0 '>Latitude</p> <p className='p-0 m-0 h3'>{this.props.cityData.lat}</p>
               </li>
 
-              <li className='py-2'>
+              <li className='list-01'>
                 <p className='p-0 m-0 '>Longtitude</p> <p className='p-0 m-0 h3'>{this.props.cityData.lon}</p>
               </li>
 
-              <li className='py-2'>
+              <li className='list-01'>
                 <p className='p-0 m-0 '>Location</p> <p className='p-0 m-0 h3'>{this.props.cityData.display_name}</p>
               </li>
 
