@@ -21,3 +21,5 @@ Finish time: NA
 Actual time needed to complete: NA
 
 Couldn't complete the API section.
+
+![Optional Text](../Screen%20Shot%202022-08-23%20at%202.31.50%20PM.png)
