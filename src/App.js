@@ -18,8 +18,8 @@ class App extends React.Component {
 
   handleCitySubmit = async (e) => {
     e.preventDefault();
-    let url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&q=${this.state.city}&format=json`;
-    let cityInfo = await axios.get(url).catch(this.catch);
+    // let url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&q=${this.state.city}&format=json`;
+    // let cityInfo = await axios.get(url).catch(this.catch);
     let cityCast = await axios.get(`http://localhost:3001/weatherData?searchQuery=${this.state.city}`).catch(err => {
     });
     this.setState({
