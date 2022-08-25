@@ -1,10 +1,11 @@
 import React from "react";
 import Form from './Form';
+import Error from './Error';
 
 
 class Main extends React.Component {
   render() {
-    console.log(this.props);
+
     return (
       <div className='test'>
 
@@ -24,16 +25,22 @@ class Main extends React.Component {
             handleCityInput={this.props.handleCityInput}
             handleCitySubmit={this.props.handleCitySubmit}
           />
+          {this.props.error && (
+            <Error
+              errorMessage={this.props.errorMessage}
+            />
+
+          )}
 
 
           {Object.keys(this.props.cityData).length > 0 && (
             <ul className='list'>
               <li className='list-01'>
-                <p className='p-0 m-0 '>Latitude</p> <p className='p-0 m-0 h3'>{this.props.cityData.lat}</p>
+                <p className='p-0 m-0 '>Lat</p> <p className='p-0 m-0 h3'>{this.props.cityData.lat}</p>
               </li>
 
               <li className='list-01'>
-                <p className='p-0 m-0 '>Longtitude</p> <p className='p-0 m-0 h3'>{this.props.cityData.lon}</p>
+                <p className='p-0 m-0 '>Long</p> <p className='p-0 m-0 h3'>{this.props.cityData.lon}</p>
               </li>
 
               <li className='list-01'>
