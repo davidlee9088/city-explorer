@@ -8,7 +8,6 @@ class Weather extends React.Component {
         let weather = this.props.weatherData.map((day, idx) => (
             <Cast
                 key={idx}
-                city={this.props.city}
                 date={day}
             />
         ))
@@ -16,13 +15,13 @@ class Weather extends React.Component {
             <div>
                 <h3>Weather</h3>
 
-                {!weather.length ? (
+                {!weather.length ? 
                     <p>No Weather</p>
-                ) : (
-                    <ul className>
-                        {[weather]}
+                 : 
+                    <ul>
+                        {weather}
                     </ul>
-                )}
+                }
             </div>
         );
     }

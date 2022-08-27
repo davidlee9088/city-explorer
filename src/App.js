@@ -4,6 +4,7 @@ import Main from './Main';
 import Movies from './Movies'
 import Footer from './Footer'
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -17,103 +18,37 @@ class App extends React.Component {
     }
   }
 
-  // handleCitySubmit = async (e) => {
-  //   e.preventDefault();
-  //   // let url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&q=${this.state.city}&format=json`;
-  //   // let cityInfo = await axios.get(url).catch(this.catch);
-  //   let cityCast = await axios.get(`http://localhost:3001/weatherData?searchQuery=${this.state.city}`).catch(err => {
-  //   });
-  //   this.setState({
-  //     weatherData: cityCast.data
-  //   })
-  // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // // handleCitySubmit = async(e) => {
-  // //   e.preventDefault();
-
-  // //   //https://us1.locationiq.com/v1/search.php
-  // //   let url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&q=${this.state.city}&format=json`;
-  // //   let cityInfo = await axios.get(url).catch(this.catch);
-  // //   console.log(cityInfo);
-
-
-
-
-
-
-  // // if (!cityInfo) return
-  // // this.setState({
-  // //   cityData: cityInfo.data[0],
-  // //   error: false,
-  // //   errorMessage: ''
-  // // })
-
-  // // }
-
-  // catch = (error) => {
-  //   console.log(error, 'Errored')
-
-  //   this.setState({
-  //     error: true,
-  //     errorMessage: `ERROR ${error.response.status}: Could not find ${this.state.city}`,
-  //     cityData: {}
-  //   })
-
-  // }
-
-
-  // handleCityInput = (e) => {
-  //   this.setState({
-  //     city: e.target.value
-  //   })
-
-  // }
-
-
-
   handleCitySubmit = async (e) => {
     e.preventDefault();
     try {
-     
+
       let data = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&q=${this.state.city}&format=json`);
-      console.log('data',data);
-     
+
 
       let cityDataMap = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&center=${data.data[0].lat},${data.data[0].lon}&zoom=14`
-      console.log('cityDataMap',cityDataMap)
-      console.log(data, 'data from locationiq api')
 
       const { lon, lat } = data.data[0];
 
-      console.log(lat, lon)
+      let urlTest = `${process.env.REACT_APP_SERVER}/weatherData?lat=${lat}&lon=${lon}`
+      const cityCast = await axios.get(urlTest);
 
-      const cityCast = await axios.get(`http://localhost:3001/weather?lat=${lat}&lon=${lon}`);
-
-      console.log(cityCast, 'new weather request')
 
 
 
 
       let forecast = cityCast.data;
-      console.log(cityCast);
-      let url = `${process.env.REACT_APP_SERVER}/movies?movieQueryCity=${this.state.city}`
+      let url = `${process.env.REACT_APP_SERVER}/movies?cityname=${this.state.city}`
       let cityMovie = await axios.get(url);
+      console.log(cityMovie.data);
       let movieData = cityMovie.data
+
+      if (!movieData) {
+        movieData = []
+      }
+
+      if (!forecast) {
+        forecast = []
+      }
 
 
       this.setState({
@@ -124,12 +59,12 @@ class App extends React.Component {
         movieArr: movieData
       })
 
-
+      // console.log(this.state.movieArr);
     } catch (error) {
 
       this.setState({
         error: true,
-        // errorMessage: `An Error Occurred: ${error.response.status}`
+        errorMessage: `An Error Occurred: ${error.response.status}`
 
       })
 
@@ -142,24 +77,6 @@ class App extends React.Component {
       city: e.target.value
     })
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -183,17 +100,8 @@ class App extends React.Component {
             movie={this.state.movieArr}
           />
         }
-
-
-
-
-
         <Footer />
-
-
-
       </>
-
     );
   }
 };

@@ -62,8 +62,8 @@ class Main extends React.Component {
 
 
           <Weather
-          weatherData = {this.props.weatherData}
-          city={this.props.cityData.display_name}
+          weatherData={this.props.weatherData}
+          // city={this.props.cityData.display_name}
           />
         </div>
       </div>

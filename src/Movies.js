@@ -6,14 +6,15 @@ import './App.css'
 
 class Movies extends React.Component {
   render() {
+    console.log(this.props.movie);
     return(
-      <div className="border-top py-4">
+      <div>
         <h3>Movies about your city of choice: </h3>
-        <div className='d-flex flex-wrap'>
+        <div>
       {
         this.props.movie.map((movie, idx) => (
 
-        <Col> 
+        
           <Card style={{width:'18rem'}} className='card container' key={idx}>
             <Card.Body>
               <Card.Img 
@@ -22,7 +23,7 @@ class Movies extends React.Component {
                 style={{cursor:'pointer'}}
                 src={`https://image.tmdb.org/t/p/w500/${movie.img}`} 
                 alt={movie.title}/> 
-
+{/* how to not render image if null = false  */}
             <Card.Title>
                 Movie Title: {movie.title}
             </Card.Title>
@@ -40,7 +41,7 @@ class Movies extends React.Component {
               </Card.Text>
             </Card.Body>
           </Card>
-        </Col>
+        
     
         ))}
         </div>
