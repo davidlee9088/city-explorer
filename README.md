@@ -10,16 +10,16 @@ Change Log
 Credit and Collaborations
 Time Estimates For each of the lab features, make an estimate of the time it will take you to complete the feature, and record your start and finish times for that feature:
 
-Name of feature: Hard Coded Weather Type using API
+Name of feature: USING API to get the live Data of the weather
 
-Estimate of time needed to complete: 2 Hours
+Estimate of time needed to complete: 6 Hours
 
 Start time: 1600
 
-Finish time: 2000
+Finish time: 2200
 
-Actual time needed to complete: 4 Hours
+Actual time needed to complete: 6 Hours
 
 Completed API
 
-![Optional Text](../Screen%20Shot%202022-08-23%20at%202.31.50%20PM.png)
+![Optional Text](8.jpg)
