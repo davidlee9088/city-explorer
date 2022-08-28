@@ -10,7 +10,7 @@ class Forms extends React.Component {
         <Form onSubmit={this.props.handleCitySubmit}>
           <Form.Group className="form.group">
           <div className='form.everything'>
-            <Form.Label type="text">Search a City</Form.Label>
+            <Form.Label type="text">Look for City</Form.Label>
             <Form.Control onInput={this.props.handleCityInput} />
           </div>
             <Button variants="Secondary" type="submit">
